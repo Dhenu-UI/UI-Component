@@ -1,0 +1,36 @@
+// Maps / Token Definitions
+$web-tokens: (
+  "platform": "web",
+  "only-web": 1,
+  "only-app": 0,
+);
+
+$app-tokens: (
+  "platform": "app",
+  "only-web": 0,
+  "only-app": 1,
+);
+
+// Reusable Mixin
+@mixin render-css-vars($map, $prefix: '') {
+  @each $key, $value in $map {
+    --#{$prefix}#{$key}: #{$value};
+  }
+}
+
+// Global Variables Output
+:root {
+  @include render-css-vars($web-tokens);
+  @include render-css-vars($app-tokens);
+}
+
+// Example usage in a component SCSS file:
+// .platform-banner {
+//   content: var(--platform);
+//   opacity: var(--only-app);
+// }
+//
+// Example usage in CSS variables:
+// --platform-name: var(--platform);
+// --platform-web-only: var(--only-web);
+// --platform-app-only: var(--only-app);

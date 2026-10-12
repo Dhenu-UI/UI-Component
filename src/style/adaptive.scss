@@ -1,0 +1,121 @@
+@use 'sass:map';
+@use 'sass:list';
+
+$columns: (
+  "12m-12t-12d": (328, 704, 1168, 1168),
+  "12m-12t-9d": (328, 704, 871, 871),
+  "12m-12t-8d": (328, 704, 772, 772),
+  "12m-6t-6d": (328, 344, 574, 574),
+  "12m-6t-4d": (328, 344, 376, 376),
+  "12m-6t-3d": (328, 344, 277, 277),
+  "mscroll-6t-4d": (280, 344, 376, 376),
+  "mscroll-4t-3d": (280, 224, 277, 277),
+  "6m-6t-6d": (160, 344, 574, 574),
+  "6m-6t-4d": (160, 344, 376, 376),
+  "6m-4t-3d": (160, 224, 277, 277),
+  "6m-3t-2d": (160, 164, 178, 178),
+  "4m-3t-2d": (104, 164, 178, 178),
+  "3m-3t-2d": (76, 164, 178, 178),
+  "3m-2t-1d": (76, 104, 79, 79),
+  "gutter": (8, 16, 20, 20)
+);
+
+$screen-index: (mobile: 1, tablet: 2, desktop: 3, large-desktop: 4);
+
+$adaptive-viewport-tokens: (
+  mobile: (
+    "breakpoints": 360,
+    "number": 0,
+    "font-size": ("h1": 36px, "h2": 32px, "h3": 28px, "h4": 24px, "h5": 20px, "p1": 18px, "p2": 16px, "p3": 14px, "p4": 12px),
+    "font-lineheight": ("h1": 44px, "h2": 40px, "h3": 36px, "h4": 32px, "h5": 28px, "p1": 24px, "p2": 20px, "p3": 18px, "p4": 16px),
+    "radius": ("2xs": 4px, "xs": 8px, "sm": 12px, "md": 16px, "lg": 20px, "xl": 24px, "full": 1440px, "bottomsheet": 0px),
+    "spacing": ("2xs": 2px, "xs": 4px, "sm": 8px, "md": 12px, "lg": 16px, "xl": 20px, "2xl": 24px, "3xl": 28px, "4xl": 32px, "5xl": 40px, "negative-overlap": -32px, "bottomsheet-top": 8px),
+    "visibility": ("d0-t0-m1": 1, "d1-t1-m0": 0),
+    "popup": ("small": 360, "medium": 360),
+    "margin": ("horizontal": 16px, "vertical": 20px),
+    "button-size": "medium"
+  ),
+  tablet: (
+    "breakpoints": 768,
+    "number": 0,
+    "font-size": ("h1": 40px, "h2": 36px, "h3": 32px, "h4": 28px, "h5": 24px, "p1": 20px, "p2": 18px, "p3": 16px, "p4": 14px),
+    "font-lineheight": ("h1": 48px, "h2": 44px, "h3": 40px, "h4": 36px, "h5": 32px, "p1": 28px, "p2": 24px, "p3": 20px, "p4": 18px),
+    "radius": ("2xs": 4px, "xs": 8px, "sm": 12px, "md": 16px, "lg": 20px, "xl": 24px, "full": 1440px, "bottomsheet": 20px),
+    "spacing": ("2xs": 2px, "xs": 4px, "sm": 8px, "md": 12px, "lg": 16px, "xl": 24px, "2xl": 28px, "3xl": 32px, "4xl": 40px, "5xl": 48px, "negative-overlap": -32px, "bottomsheet-top": 24px),
+    "visibility": ("d0-t0-m1": 0, "d1-t1-m0": 1),
+    "popup": ("small": 480, "medium": 688),
+    "margin": ("horizontal": 32px, "vertical": 36px),
+    "button-size": "large"
+  ),
+  desktop: (
+    "breakpoints": 1280,
+    "number": 0,
+    "font-size": ("h1": 44px, "h2": 40px, "h3": 36px, "h4": 32px, "h5": 28px, "p1": 24px, "p2": 20px, "p3": 18px, "p4": 16px),
+    "font-lineheight": ("h1": 52px, "h2": 48px, "h3": 44px, "h4": 40px, "h5": 36px, "p1": 32px, "p2": 28px, "p3": 24px, "p4": 20px),
+    "radius": ("2xs": 8px, "xs": 8px, "sm": 16px, "md": 20px, "lg": 24px, "xl": 24px, "full": 1440px, "bottomsheet": 24px),
+    "spacing": ("2xs": 4px, "xs": 8px, "sm": 12px, "md": 16px, "lg": 20px, "xl": 28px, "2xl": 32px, "3xl": 40px, "4xl": 48px, "5xl": 64px, "negative-overlap": -32px, "bottomsheet-top": 32px),
+    "visibility": ("d0-t0-m1": 0, "d1-t1-m0": 1),
+    "popup": ("small": 550, "medium": 740),
+    "margin": ("horizontal": 56px, "vertical": 40px),
+    "button-size": "large"
+  ),
+  large-desktop: (
+    "breakpoints": 1440,
+    "number": 0,
+    "font-size": ("h1": 48px, "h2": 44px, "h3": 40px, "h4": 36px, "h5": 32px, "p1": 28px, "p2": 24px, "p3": 20px, "p4": 18px),
+    "font-lineheight": ("h1": 56px, "h2": 52px, "h3": 48px, "h4": 44px, "h5": 40px, "p1": 36px, "p2": 32px, "p3": 28px, "p4": 24px),
+    "radius": ("2xs": 8px, "xs": 12px, "sm": 16px, "md": 24px, "lg": 24px, "xl": 24px, "full": 1440px, "bottomsheet": 24px),
+    "spacing": ("2xs": 4px, "xs": 8px, "sm": 12px, "md": 20px, "lg": 24px, "xl": 32px, "2xl": 40px, "3xl": 48px, "4xl": 64px, "5xl": 80px, "negative-overlap": -60px, "bottomsheet-top": 32px),
+    "visibility": ("d0-t0-m1": 0, "d1-t1-m0": 1),
+    "popup": ("small": 0, "medium": 0),
+    "margin": ("horizontal": 56px, "vertical": 40px),
+    "button-size": "large"
+  )
+);
+
+@function column($name, $screen) {
+  @return list.nth(map.get($columns, $name), map.get($screen-index, $screen));
+}
+
+@mixin render-group($group, $tokens) {
+  @each $key, $value in $tokens {
+    --global-#{$group}-#{$key}: #{$value};
+  }
+}
+
+@mixin render-screen($screen, $tokens) {
+  --global-number: #{map.get($tokens, 'number')};
+  @each $group in (font-size, font-lineheight, radius, spacing, visibility, popup, margin) {
+    @include render-group($group, map.get($tokens, $group));
+  }
+  @each $name in map.keys($columns) {
+    --global-columns-#{$name}: #{column($name, $screen)};
+  }
+  --global-button-size: #{map.get($tokens, 'button-size')};
+}
+
+@each $screen, $tokens in $adaptive-viewport-tokens {
+  $breakpoint: map.get($tokens, 'breakpoints');
+  @if $screen == mobile {
+    :root { @include render-screen($screen, $tokens); }
+  } @else {
+    @media (min-width: #{$breakpoint}px) {
+      :root { @include render-screen($screen, $tokens); }
+    }
+  }
+}
+
+// Example usage in a component SCSS file:
+// .button {
+//   padding: var(--global-spacing-md) var(--global-spacing-lg);
+//   font-size: var(--global-font-size-p2);
+//   line-height: var(--global-font-lineheight-p2);
+//   border-radius: var(--global-radius-md);
+//   min-height: var(--global-button-size);
+// }
+//
+// Example usage in CSS variables:
+// --button-height: var(--global-button-size);
+// --button-padding-x: var(--global-spacing-lg);
+// --button-radius: var(--global-radius-md);
+// --button-column-width: var(--global-columns-6m-6t-6d);
