@@ -20,12 +20,11 @@
 }
 
 .btn-large {
-    height: var(--ramps-48);
-    border-radius: var(--radius-md);
-    padding: var(--ramps-28);
+    height: var(--button-size-large-height);
+    padding: 0 var(--button-size-large-padding-x);
+    border-radius: var(--button-size-large-radius);
 }
 
-.btn-primary {
-    color: var(--global-colors-blue-500);
-    background: var(--global-colors-red-400);
+.btn-secondary {
+    background: var(--button-secondary-foreground-color-default) !important;
 }

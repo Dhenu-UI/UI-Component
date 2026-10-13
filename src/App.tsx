@@ -8,7 +8,7 @@ export default function App() {
       <section className="card">
         <h2>Button</h2>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <Button variant="primary" size="large">Primary</Button>
+          <Button variant="secondary" size="large">Primary</Button>
         </div>
       </section>
     </div>
