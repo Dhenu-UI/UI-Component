@@ -2,9 +2,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: var(--global-scale-100);
+    min-width: max-content;
+    border: 1px solid transparent;
     font-family: inherit;
     font-weight: 600;
-    border: 1px solid transparent;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     outline: none;
@@ -20,10 +22,10 @@
 .btn-large {
     height: var(--ramps-48);
     border-radius: var(--radius-md);
+    padding: var(--ramps-28);
 }
 
 .btn-primary {
-    padding: var(--ramps-28);
     color: var(--global-colors-blue-500);
     background: var(--global-colors-red-400);
 }

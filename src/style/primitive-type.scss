@@ -1,0 +1,81 @@
+$primitive-type-tokens: (
+  "family": (
+    "inter": "Inter"
+  ),
+  "weight": (
+    "bold-700": "Bold",
+    "italic-400": "Italic",
+    "medium-500": "Medium",
+    "regular-400": "Regular",
+    "semibold-600": "Semi bold"
+  ),
+  "letter-spacing": (
+    // "bold-700": -2%,
+    "italic-400": 0,
+    "medium-500": 0,
+    "regular-400": 0,
+    // "semibold-600": -1%
+  ),
+  "size": (
+    "display": (
+      "lg": 48px,
+      "md": 44px,
+      "sm": 40px
+    ),
+    "heading": (
+      "h1": 36px,
+      "h2": 32px,
+      "h3": 28px,
+      "h4": 24px,
+      "h5": 20px
+    ),
+    "paragraph": (
+      "lg": 18px,
+      "md": 16px,
+      "sm": 14px,
+      "xsm": 12px
+    )
+  ),
+  "line-height": (
+    "display": (
+      "lg": 56px,
+      "md": 52px,
+      "sm": 48px
+    ),
+    "heading": (
+      "h1": 44px,
+      "h2": 40px,
+      "h3": 36px,
+      "h4": 32px,
+      "h5": 28px
+    ),
+    "paragraph": (
+      "lg": 24px,
+      "md": 20px,
+      "sm": 18px,
+      "xsm": 16px
+    )
+  ),
+  "paragraph-spacing": (
+    "lg": 16px,
+    "md": 16px,
+    "sm": 12px,
+    "xsm": 8px
+  )
+);
+
+@mixin render-nested-vars($map, $prefix: '') {
+  @each $key, $value in $map {
+    $full-key: if($prefix == '', $key, '#{$prefix}-#{$key}');
+    
+    @if type-of($value) == 'map' {
+      @include render-nested-vars($value, $full-key);
+    } @else {
+      --#{$full-key}: #{$value};
+    }
+  }
+}
+
+:root {
+  @include render-nested-vars($primitive-type-tokens, 'font');
+}

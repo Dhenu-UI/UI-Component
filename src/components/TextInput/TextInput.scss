@@ -1,9 +1,9 @@
 .text-input-container {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--global-scale-75);
   width: 100%;
-  max-width: 360px;
+  max-width: var(--global-scale-4500);
 
   &--full-width {
     max-width: 100%;
@@ -14,24 +14,24 @@
   position: relative;
   display: flex;
   align-items: center;
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 0 14px;
-  height: 48px;
+  background-color: var(--global-colors-basic-white);
+  border: 1px solid var(--global-colors-grey-200);
+  border-radius: var(--radius-xl);
+  padding: 0 var(--global-scale-175);
+  height: var(--ramps-48);
   transition: all 0.2s ease;
 
   &:focus-within {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    border-color: var(--global-colors-blue-500);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--global-colors-blue-500) 10%, transparent);
   }
 
   &--error {
-    border-color: #ef4444;
+    border-color: var(--global-colors-red-500);
 
     &:focus-within {
-      border-color: #ef4444;
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+      border-color: var(--global-colors-red-500);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--global-colors-red-500) 10%, transparent);
     }
   }
 }
@@ -39,8 +39,8 @@
 .text-input-icon {
   display: flex;
   align-items: center;
-  color: #64748b;
-  margin-right: 10px;
+  color: var(--global-colors-grey-500);
+  margin-right: var(--global-scale-125);
 }
 
 .text-input {
@@ -48,26 +48,26 @@
   border: none;
   outline: none;
   background: transparent;
-  font-size: 15px;
-  color: #1e293b;
+  font-size: var(--font-15);
+  color: var(--global-colors-grey-900);
 
   &::placeholder {
-    color: #cbd5e1;
+    color: var(--global-colors-grey-300);
   }
 }
 
 .text-input-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-left: 10px;
+  gap: var(--global-scale-100);
+  margin-left: var(--global-scale-125);
 }
 
 .text-input-action-btn {
   background: none;
   border: none;
-  color: #2563eb;
-  font-size: 15px;
+  color: var(--global-colors-blue-500);
+  font-size: var(--font-15);
   font-weight: 500;
   cursor: pointer;
   padding: 0;
@@ -80,22 +80,22 @@
 .text-input-clear-btn {
   background: none;
   border: none;
-  color: #2563eb;
+  color: var(--global-colors-blue-500);
   cursor: pointer;
   padding: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: var(--font-16);
   line-height: 1;
 }
 
 .text-input-helper-text {
-  font-size: 13px;
-  color: #64748b;
+  font-size: var(--font-13);
+  color: var(--global-colors-grey-500);
   margin-top: 2px;
 
   &--error {
-    color: #ef4444;
+    color: var(--global-colors-red-500);
   }
 }
