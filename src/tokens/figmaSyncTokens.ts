@@ -6,7 +6,7 @@ const token = process.env.FIGMA_PERSONAL_ACCESS_TOKEN?.trim();
 const fileKey = process.env.FIGMA_FILE_KEY || 'CXxUbHl3oMzt9Bzv3SKv75';
 
 if (!token) {
-  console.warn('⚠️ FIGMA_PERSONAL_ACCESS_TOKEN is missing in .env file. Skipping Figma fetch.');
+  console.warn('⚠️ FIGMA_PERSONAL_ACCESS_TOKEN is missing. Add it to a local .env file or your shell environment.');
 }
 
 const jsonDir = path.join(process.cwd(), 'src', 'style', 'json');
